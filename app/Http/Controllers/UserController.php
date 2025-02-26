@@ -3,20 +3,6 @@
 namespace App\Http\Controllers;
 
 class UserController extends Controller {
-	
-	public function show($name) {
-		$users = [
-			'user1' => 'city1',
-			'user2' => 'city2',
-			'user3' => 'city3',
-			'user4' => 'city4',
-			'user5' => 'city5',
-		];
-		if (!array_key_exists($name, $users)) {
-			return 'Такого пользователя не существует';
-		}
-		return $users[$name];
-	}
 
 	public function name($name) {
 		$title = 'Только имя';
@@ -33,8 +19,36 @@ class UserController extends Controller {
 		return view('user.fullname', ['title' => $title, 'surname' => $surname, 'name' => $name]);
 	}
 
-	public function all() {
-		return view('user');
+	public function customer() {
+		$name 	= 'Имя';
+		$age  	= 23;
+		$salary = 1000;
+		$title = 'Сотрудник';
+		$class = 'classname';
+		$color = 'color:red;';
+		$inputval = "Значение для 3го инпута";
+		$text = 'Сайт code.mu';
+		$href = 'https://code.mu';
+		return view('user.customer', ['title' => $title, 'name' => $name, 'age' => $age, 'salary' => $salary, 'inputval' => $inputval, 'class' => $class, 'color' => $color, 'text' => $text, 'href' => $href]);
+	}
+
+	public function arr() {
+		$title = 'Массив';
+		$customer = ['name' => 'Валерик', 'age' => 25, 'salary' => 10000];
+		$arr = ['user1','user2','user3'];
+		return view('user.arr', ['customer' => $customer, 'arr' => $arr, 'title' => $title]);
+	}
+
+	function city($country = null, $city = null) {
+		$location = ['country' => $country, 'city' => $city];
+		$title = 'Город';
+		return view('user.city', ['title' => $title, 'location' => $location]);
+	}
+
+	public function viewDate($year = null, $month = null, $day = null) {
+		$title = 'Даты';
+		$viewDate = ['year' => $year, 'month' => $month, 'day' => $day];
+		return view('user.date', ['title' => $title, 'viewDate' => $viewDate]);
 	}
 }
 ?>

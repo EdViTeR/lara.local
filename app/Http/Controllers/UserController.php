@@ -34,9 +34,34 @@ class UserController extends Controller {
 
 	public function arr() {
 		$title = 'Массив';
-		$customer = ['name' => 'Валерик', 'age' => 25, 'salary' => 10000];
-		$arr = ['user1','user2','user3'];
-		return view('user.arr', ['customer' => $customer, 'arr' => $arr, 'title' => $title]);
+		$employees = [
+			[
+				'name' => 'user1',
+				'surname' => 'surname1',
+				'salary' => 1000,
+			],
+			[
+				'name' => 'user2',
+				'surname' => 'surname2',
+				'salary' => 2000,
+			],
+			[
+				'name' => 'user3',
+				'surname' => 'surname3',
+				'salary' => 3000,
+			],
+			[
+				'name' => 'user4',
+				'surname' => 'surname4',
+				'salary' => 4000,
+			],
+			[
+				'name' => 'user5',
+				'surname' => 'surname5',
+				'salary' => 5000,
+			],
+		];
+		return view('user.arr', ['employees' => $employees, 'title' => $title]);
 	}
 
 	function city($country = null, $city = null) {

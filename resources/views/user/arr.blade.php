@@ -2,19 +2,20 @@
 	<x-slot:title>
 		{{ $title }}
 	</x-slot>
-	<p>{{ $customer['name'] }}<p>
-	<p>{{ $customer['age'] }}<p>
-	<p>{{ $customer['salary'] }}<p>
-	<ul>
-	@foreach ($arr as $elem)
-		@if ($loop->first)
-			<li>{{ $elem }}</li>
-		@endif
-		
-		@if ($loop->last)
-			<li class="last">
-		@endif
-		{{ $elem }}</li>
-	@endforeach
-	</ul>
+	<table>
+		<tr>
+			<th>#</th>
+			<th>Имя</th>
+			<th>Фамилия</th>
+			<th>Зарплата</th>
+		</tr>
+		@foreach ($employees as $employer)
+				<tr>
+					<th>{{ $loop->iteration }}</th>
+					@foreach ($employer as $key => $value)
+						<td>{{ $value }}</td>
+					@endforeach
+				</tr>
+		@endforeach
+	</table>
 </x-layout>

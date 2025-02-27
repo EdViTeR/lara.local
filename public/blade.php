@@ -312,3 +312,114 @@ public function age($name, $age) {
 	</ul>
 */// №2
 // <li>{{ $loop->iteration }} {{ $elem }}</li>
+/* №3
+	@foreach ($arr as $elem)
+		@if ($loop->first)
+			<li class="first">{{ $loop->iteration }} {{ $elem }}</li>
+		@elseif ($loop->last)
+			<li class="last">{{ $loop->iteration }} {{ $elem }}</li>
+		@else
+			<li>{{ $loop->iteration }} {{ $elem }}</li>
+		@endif
+	@endforeach
+*/
+/* №4
+		@foreach ($arr as $elem)
+			@if ($loop->remaining < 3)
+				<li><i>{{ $loop->iteration }} {{ $elem }}</i></li>
+			@else
+				<li><b>{{ $loop->iteration }} {{ $elem }}</b></li>
+			@endif
+		@endforeach
+*/
+////////////////////////////////////////////////////////////
+/* ⊗pplrPmBlBD_53 №1
+Из контроллера: $arr = [1,2,3,4,5,6,7,8,9,0,1,2,3,4];
+	@foreach ($arr as $elem)
+		<li>{{ $loop->iteration }}. <b>{{ $elem }}</b></li>
+		@break($elem == 0)
+	@endforeach
+*/
+////////////////////////////////////////////////////////////
+/* ⊗pplrPmBlCD_54 №1
+Из контроллера: $arr = [1,2,3,4,5,6,7,8,9,0,1,2,3,4];
+	@foreach ($arr as $elem)
+		@continue($elem == 0)
+		<li>{{ $loop->iteration }}. <b>{{ $elem }}</b></li>
+	@endforeach
+*/
+////////////////////////////////////////////////////////////
+/* ⊗pplrPmBlFrD_55 №1
+	@for ($i = 1; $i < 11; $i++)
+		<p>{{ $i }}</p>
+	@endfor
+*/
+////////////////////////////////////////////////////////////
+/*	⊗pplrPmBlPCB_56 №1
+@php
+	for ($i = 1; $i < 11; $i++) {
+		echo "<p>$i</p>";
+	}
+@endphp
+*/
+////////////////////////////////////////////////////////////
+/* ⊗pplrPmBlPrm_57 №1
+	@foreach($links as $key => $link)
+		<a href="http://{{ $link['href']  }}">{{ $link['text']  }}</a>
+	@endforeach
+*/
+/* №2
+	<ul>
+		@foreach($links as $key => $link)
+			<li><a href="http://{{ $link['href']  }}">{{ $link['text']  }}</a></li>
+		@endforeach
+	</ul>
+*/
+/* №3
+	<table>
+		@foreach ($employees as $employer)
+			<tr>
+			@foreach ($employer as $key => $value)
+				<td>{{ $value }}</td>
+			@endforeach
+			</tr>
+		@endforeach
+	</table>
+*/
+/* №4 
+	<table>
+		@foreach ($employees as $employer)
+			@if ($loop->first)
+				<tr>
+					<th>Имя</th>
+					<th>Фамилия</th>
+					<th>Зарплата</th>
+				</tr>
+			@else
+				<tr>
+				@foreach ($employer as $key => $value)
+					<td>{{ $value }}</td>
+				@endforeach
+				</tr>
+			@endif
+		@endforeach
+	</table>
+*/
+/* №5
+	<table>
+		<tr>
+			<th>#</th>
+			<th>Имя</th>
+			<th>Фамилия</th>
+			<th>Зарплата</th>
+		</tr>
+		@foreach ($employees as $employer)
+				<tr>
+					<th>{{ $loop->iteration }}</th>
+					@foreach ($employer as $key => $value)
+						<td>{{ $value }}</td>
+					@endforeach
+				</tr>
+		@endforeach
+	</table>
+*/

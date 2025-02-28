@@ -33,35 +33,13 @@ class UserController extends Controller {
 	}
 
 	public function arr() {
-		$title = 'Массив';
-		$employees = [
-			[
-				'name' => 'user1',
-				'surname' => 'surname1',
-				'salary' => 1000,
-			],
-			[
-				'name' => 'user2',
-				'surname' => 'surname2',
-				'salary' => 2000,
-			],
-			[
-				'name' => 'user3',
-				'surname' => 'surname3',
-				'salary' => 3000,
-			],
-			[
-				'name' => 'user4',
-				'surname' => 'surname4',
-				'salary' => 4000,
-			],
-			[
-				'name' => 'user5',
-				'surname' => 'surname5',
-				'salary' => 5000,
-			],
-		];
-		return view('user.arr', ['employees' => $employees, 'title' => $title]);
+		$title = 'Время';
+		$count = date('t');
+		for ($i=1; $i <= $count; $i++) { 
+			$arr[] = $i;
+		}
+		$nday = date('d');
+		return view('user.arr', ['arr' => $arr, 'nday' => $nday, 'title' => $title]);
 	}
 
 	function city($country = null, $city = null) {

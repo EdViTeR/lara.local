@@ -423,3 +423,67 @@ public function age($name, $age) {
 		@endforeach
 	</table>
 */
+/* №6
+	@foreach ($employees as $employer)
+		<tr>
+			@if ( $employer['salary'] > 2000)
+				<th>{{ $loop->iteration }}</th>
+				<td>{{ $employer['name'] }}</td>
+				<td>{{ $employer['surname'] }}</td>
+				<td>{{ $employer['salary'] }}</td>
+			@endif
+		</tr>
+	@endforeach
+*/
+/* №7 №8
+	<tr>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Статус</th>
+	</tr>
+	@foreach ($users as $user)
+		<tr>
+			<td>{{ $user['name'] }}</td>
+			<td>{{ $user['surname'] }}</td>
+			@if ($user['banned'] === true)
+				<td style=color:red>Забанен</td>
+			@else
+				<td style=color:green>Активен</td>
+			@endif
+		</tr>
+	@endforeach
+*/
+/* №9
+Из контроллера: $arr = ['str1', 'str2', 'str3', 'str4', 'str5'];
+	@foreach ($arr as $value)
+		<input value="{{ $value }}">
+	@endforeach
+*/
+/* №10
+Из контроллера: $arr = ['str1', 'str2', 'str3', 'str4', 'str5'];
+	@foreach ($arr as $value)
+		<option value="{{ $value }}">{{ $value }}</option>
+	@endforeach
+*/
+// №11
+public function arr() {
+	$title = 'Время';
+	$count = date('t');
+	for ($i=1; $i <= $count; $i++) { 
+		$arr[] = $i;
+	}
+	$nday = date('d');
+	return view('user.arr', ['arr' => $arr, 'nday' => $nday, 'title' => $title]);
+}
+/* arr.blade.php
+	<ul>
+		@foreach ($arr as $value)
+			@if ($value == $nday)
+				<li class="active">{{ $value }}</li>
+			@else
+				<li>{{ $value }}</li>
+			@endif
+		@endforeach
+	</ul>
+*/
+////////////////////////////////////////////////////////////

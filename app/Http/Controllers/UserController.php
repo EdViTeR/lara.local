@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Collection;
+
 class UserController extends Controller {
 
 	public function name($name) {
@@ -34,12 +36,8 @@ class UserController extends Controller {
 
 	public function arr() {
 		$title = 'Время';
-		$count = date('t');
-		for ($i=1; $i <= $count; $i++) { 
-			$arr[] = $i;
-		}
-		$nday = date('d');
-		return view('user.arr', ['arr' => $arr, 'nday' => $nday, 'title' => $title]);
+		$arr = collect([1,2,3,4,5])->chunk(2);
+		return view('user.arr', ['arr' => $arr, 'title' => $title]);
 	}
 
 	function city($country = null, $city = null) {

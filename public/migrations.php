@@ -58,3 +58,80 @@ Schema::dropIfExists('user');
 Schema::rename('user', 'users');
 ///////////////////////////////////////////////////////////
 // ⊗pplrPmMgRBP_72 №1
+public function up(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('phone');
+    });
+}
+
+public function down(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('phone');
+    });
+}
+// №2
+public function up(): void
+{
+    Schema::table('users', function(Blueprint $table) {
+        $table->dropColumn('phone');
+    });
+}
+
+public function down(): void
+{
+    Schema::table('users', function(Blueprint $table) {
+        $table->string('phone');
+    });
+}
+// №3
+public function up(): void
+{
+    Schema::table('users', function(Blueprint $table) {
+        $table->dropColumn(['name', 'surname', 'birthday']);
+    });
+}
+
+public function down(): void
+{
+    Schema::table('users', function(Blueprint $table) {
+        $table->string('name', 50);
+        $table->string('surname', 50);
+        $table->string('date');
+    });
+}
+// №4
+public function up(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('name')->after('id')->change();
+        $table->string('surname')->after('name')->change();
+    });
+}
+
+public function down(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('name')->after('created_at')->change();
+        $table->string('surname')->after('name')->change();
+    });
+}
+// №5
+public function up(): void
+{
+    Schema::rename('users', 'user');
+}
+
+public function down(): void
+{
+    Schema::rename('user', 'users');
+}
+///////////////////////////////////////////////////////////
+// ⊗pplrPmMgRB_73 №1-№4
+#php artisan migrate
+#php artisan migrate:rollback
+#php artisan migrate:rollback --step=3
+#php artisan migrate:refresh
+///////////////////////////////////////////////////////////
+// ⊗pplrPmMgIC_74 №1

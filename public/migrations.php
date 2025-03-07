@@ -135,3 +135,23 @@ public function down(): void
 #php artisan migrate:refresh
 ///////////////////////////////////////////////////////////
 // ⊗pplrPmMgIC_74 №1
+public function up(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->index('email');
+    });
+}
+
+public function down(): void
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->droIndex('email');
+    });    
+}
+///////////////////////////////////////////////////////////
+// ⊗pplrPmMgPF_75 №1
+public function up(): void
+{
+    Schema::dropIfExists('post');
+}
+///////////////////////////////////////////////////////////

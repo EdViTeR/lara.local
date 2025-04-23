@@ -3,8 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller {
+
+	public function allUsers()
+	{
+		$title = 'Таблица пользователей';
+		$users = DB::table('users')->get();
+		dd($users);
+		return view('user.all', ['title' => $title, 'users' => $users]);
+	}
 
 	public function name($name) {
 		$title = 'Только имя';

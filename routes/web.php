@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/post', [PostController::class, 'show']);
 Route::get('/post/{id}', [PostController::class, 'show']);
-Route::get('/user/all/', [UserController::class, 'all']);
+Route::get('/user/allUsers/', [UserController::class, 'allUsers']);
 Route::get('/user/arr/', [UserController::class, 'arr']);
 Route::get('user/city/{country?}/{city?}', [UserController::class, 'city']);
 Route::get('user/date/{year?}/{month?}/{day?}', [UserController::class, 'viewDate']);
